@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # coding=utf-8
-""" """
+"""
+Show CPU and Memory Information.
+"""
 
 from collections import OrderedDict
 
