@@ -69,4 +69,3 @@ if __name__ == "__main__":
 	show_mem_info()
 
 	show_cpu_info()
-	
