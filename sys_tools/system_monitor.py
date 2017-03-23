@@ -33,7 +33,6 @@ def cpu_info():
 
 	return cpu_info
 
-
 def mem_info():
 	'''
 	Return the information in /proc/meminfo
@@ -46,7 +45,6 @@ def mem_info():
 			meminfo[line.split(':')[0]] = line.split(':')[1].strip()
 	return meminfo
 
-
 def show_mem_info():
 	print("meminfo___________________________")
 
@@ -55,7 +53,6 @@ def show_mem_info():
 	print('Free memory: {0}'.format(_mem_info['MemFree']))
 
 	print("meminfo___________________________")
-
 
 def show_cpu_info():
 	print("cpu_info___________________________")
@@ -68,5 +65,8 @@ def show_cpu_info():
 
 
 if __name__ == "__main__":
+
 	show_mem_info()
+
 	show_cpu_info()
+	
