@@ -3,15 +3,15 @@
 """ """
 
 from collections import OrderedDict
-import pprint
 
-def CPUinfo():
-	''' Return the information in /proc/CPUinfo
+
+def cpu_info():
+	''' Return the information in /proc/cpu_info
 	as a dictionary in the following format:
 	CPU_info['proc0']={...}
 	CPU_info['proc1']={...}
 	'''
-	CPUinfo=OrderedDict()
+	cpu_info=OrderedDict()
 	procinfo=OrderedDict()
 
 	nprocs = 0
@@ -19,7 +19,7 @@ def CPUinfo():
 		for line in f:
 			if not line.strip():
 				# end of one processor
-				CPUinfo['proc%s' % nprocs] = procinfo
+				cpu_info['proc%s' % nprocs] = procinfo
 				nprocs=nprocs+1
 				# Reset
 				procinfo=OrderedDict()
@@ -29,10 +29,10 @@ def CPUinfo():
 				else:
 					procinfo[line.split(':')[0].strip()] = ''
 
-	return CPUinfo
+	return cpu_info
 
 
-def meminfo():
+def mem_info():
 	'''
 	Return the information in /proc/meminfo
 	as a dictionary
@@ -45,26 +45,26 @@ def meminfo():
 	return meminfo
 
 
-def show_meminfo():
+def show_mem_info():
 	print("meminfo___________________________")
 
-	mem_info = meminfo()
-	print('Total memory: {0}'.format(mem_info['MemTotal']))
-	print('Free memory: {0}'.format(mem_info['MemFree']))
+	_mem_info = mem_info()
+	print('Total memory: {0}'.format(_mem_info['MemTotal']))
+	print('Free memory: {0}'.format(_mem_info['MemFree']))
 
 	print("meminfo___________________________")
 
 
-def show_cpuinfo():
-	print("cpuinfo___________________________")
+def show_cpu_info():
+	print("cpu_info___________________________")
 
-	cpu_info = CPUinfo()
-	for processor in cpu_info.keys():
-		print(cpu_info[processor]['model name'])
+	_cpu_info = cpu_info()
+	for processor in _cpu_info.keys():
+		print(_cpu_info[processor]['model name'])
 
-	print("cpuinfo___________________________")
+	print("cpu_info___________________________")
 
 
 if __name__ == "__main__":
-	show_meminfo()
-	show_cpuinfo()
+	show_mem_info()
+	show_cpu_info()
