@@ -1,6 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 """ """
+
+
 import time
 import datetime
 # from datetime import date
